@@ -76,25 +76,25 @@ namespace WebSapper.Service.GameStates
                     
                     // Для данной клетки пытаемся распространить волну
 
-                    if (_x - 1 >= 0 && map[_x - 1, _y] == 0)
+                    if (_x - 1 >= 0 && map[_x - 1, _y] == emptyCell)
                     {
                         map[_x - 1, _y] = openCell;
                         waveFlag = true;
                     }
                     
-                    if (_x + 1 < game.Width && map[_x + 1, _y] == 0)
+                    if (_x + 1 < game.Width && map[_x + 1, _y] == emptyCell)
                     {
                         map[_x + 1, _y] = openCell;
                         waveFlag = true;
                     }
                     
-                    if (_y - 1 >= 0 && map[_x, _y - 1] == 0)
+                    if (_y - 1 >= 0 && map[_x, _y - 1] == emptyCell)
                     {
                         map[_x, _y - 1] = openCell;
                         waveFlag = true;
                     }
                     
-                    if (_y + 1 < game.Height && map[_x, _y + 1] == 0)
+                    if (_y + 1 < game.Height && map[_x, _y + 1] == emptyCell)
                     {
                         map[_x, _y + 1] = openCell;
                         waveFlag = true;
