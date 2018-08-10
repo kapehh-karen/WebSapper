@@ -48,18 +48,18 @@ namespace WebSapper.Service.GameStates
             // NOTE: Если мы оказались здесь, значит мы в пустой клетке без бомбы!
 
             var map = new sbyte[game.Width, game.Height];
-            const sbyte openCell = 1, bombCell = -1, countCell = -2;
+            const sbyte openCell = 1, emptyCell = 0, bombCell = -1, countCell = -2;
 
             // Отображаем на массиве наши ячейки
             foreach (var gameCell in game.Cells)
             {
-                // -1 не проходимый участок (бомба) | -2 не проходимый участок (цифры) | 0 проходимый участок
+                // -1 непроходимый участок (бомба) | -2 непроходимый участок (цифры) | 0 проходимый участок
                 if (gameCell.IsBomb)
                     map[gameCell.X - 1, gameCell.Y - 1] = bombCell;
                 else if (gameCell.CountBombAround > 0)
                     map[gameCell.X - 1, gameCell.Y - 1] = countCell;
                 else
-                    map[gameCell.X - 1, gameCell.Y - 1] = openCell;
+                    map[gameCell.X - 1, gameCell.Y - 1] = emptyCell;
             }
 
             var waveFlag = true;
